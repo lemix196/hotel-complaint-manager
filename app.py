@@ -1,5 +1,5 @@
 from flask import Flask, render_template, url_for
-
+from forms import ComplaintForm
 
 app = Flask(__name__)
 
@@ -9,7 +9,8 @@ def index():
 
 @app.route('/complaint', methods=['GET', 'POST'])
 def complaint():
-    return "This is complaint page"
+    form = ComplaintForm()
+    return render_template("complaint.html", form=form)
 
 @app.route('/complaints/<user>')
 def index():
