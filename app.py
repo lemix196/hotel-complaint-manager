@@ -10,14 +10,14 @@ def index():
 @app.route('/complaint', methods=['GET', 'POST'])
 def complaint():
     form = ComplaintForm()
-    return render_template("complaint.html", form=form)
+    return render_template('complaint.html', form=form)
 
 @app.route('/complaints/<user>')
-def index():
+def list_user_complaints():
     return "This is user complaints page"
 
 @app.route('/ratings')
-def index():
+def ratings():
     return "This is ratings page"
 
 
