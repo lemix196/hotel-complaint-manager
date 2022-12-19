@@ -9,6 +9,7 @@ class ComplaintForm(FlaskForm):
                      ("emergency", "emergency")
                     ]
 
+
     guest_name = StringField(u"Full guest name")
     room_number = IntegerField(u"Room number")
     message = StringField(u"Tell us about your inconvenience")
