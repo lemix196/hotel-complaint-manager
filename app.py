@@ -2,6 +2,7 @@ from flask import Flask, render_template, url_for
 from forms import ComplaintForm
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = "f2f815314d859772ef6afe68"
 
 @app.route('/')
 def index():
