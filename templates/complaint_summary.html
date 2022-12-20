@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block body %} 
+
+<ul>
+    <li>
+        {{ form.guest_name.label }}: {{ form.guest_name.data }}
+    </li>
+    <li>
+        {{ form.room_number.label }}: {{ form.room_number.data }}
+    </li>
+    <li>
+        {{ form.message.label }}: {{ form.message.data }}
+    </li>
+    <li>
+        {{ form.urgency.label }}: {{ form.urgency.data }}
+    </li>
+</ul>
+
+{% endblock %}
