@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block body %}
-<form method="POST" action="{{ url_for('index') }}">
+<form method="POST" action="{{ url_for('complaint') }}">
 
     {{ form.csrf_token }}
     {{ form.guest_name.label }} {{ form.guest_name }} <br/>
@@ -8,6 +8,6 @@
     {{ form.message.label }} {{ form.message }}<br/>
     {{ form.urgency.label }} {{ form.urgency }}<br/>
 
-
+    <input type="submit" value="Send">
 </form>
 {% endblock %}
