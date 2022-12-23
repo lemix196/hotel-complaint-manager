@@ -21,7 +21,7 @@ class Complaint(db.Model):
 @app.route('/')
 def index():
     db.create_all()
-    return "This is index page"
+    return render_template('index.html')
 
 @app.route('/complaint', methods=['POST', 'GET'])
 def complaint():
