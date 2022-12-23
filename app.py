@@ -21,7 +21,7 @@ class Complaint(db.Model):
 @app.route('/')
 def index():
     db.create_all()
-    return render_template('index.html')
+    return render_template('index.html', active_menu='home')
 
 @app.route('/complaint', methods=['POST', 'GET'])
 def complaint():
@@ -34,9 +34,9 @@ def complaint():
         db.session.add(complaint)
         db.session.commit()
         flash('Your complaint was succesfully sent.')
-        return render_template('complaint_summary.html', form=form)
+        return render_template('complaint_summary.html', form=form, active_menu='complaint')
     
-    return render_template('complaint.html', form=form)
+    return render_template('complaint.html', form=form, active_menu='complaint')
 
 # @app.route('/complaints/<user>')
 # def list_user_complaints():
