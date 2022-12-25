@@ -38,9 +38,9 @@ def complaint():
     
     return render_template('complaint.html', form=form, active_menu='complaint')
 
-# @app.route('/complaints/<user>')
-# def list_user_complaints():
-#     return "This is user complaints page"
+@app.route('/complaints')
+def complaints():
+    return "This is user complaints page"
 
 @app.route('/ratings')
 def ratings():
