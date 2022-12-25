@@ -1,0 +1,23 @@
+{% extends 'base.html' %} 
+
+{% block body %}
+<table>
+    <tr>
+        <th>Guest name</th>
+        <th>Room number</th>
+        <th>Message</th>
+        <th>Urgency</th>
+    </tr>
+{% for complaint in complaints %} 
+    <tr>
+        <td>{{ complaint.guest_name }}</td>
+        <td>{{ complaint.room_number }}</td>
+        <td>{{ complaint.message }}</td>
+        <td>{{ complaint.urgency }}</td>
+    </tr>
+{% endfor %}
+
+</table>
+
+
+{% endblock body %} 

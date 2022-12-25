@@ -40,7 +40,9 @@ def complaint():
 
 @app.route('/complaints')
 def complaints():
-    return "This is user complaints page"
+    complaints = Complaint.query.all()
+
+    return render_template('complaints.html', complaints=complaints, active_menu='complaints')
 
 @app.route('/ratings')
 def ratings():
