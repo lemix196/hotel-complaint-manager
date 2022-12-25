@@ -13,7 +13,7 @@ class ComplaintForm(FlaskForm):
     guest_name = StringField(u"Full guest name")
     room_number = IntegerField(u"Room number")
     message = StringField(u"Tell us about your inconvenience")
-    urgency = SelectField(u"Urgency...", choices=_URGENCY_LIST)
+    urgency = SelectField(u"Urgency", choices=_URGENCY_LIST)
 
 
 if __name__ == "__main__":

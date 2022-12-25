@@ -1,13 +1,81 @@
 {% extends "base.html" %}
 {% block body %}
 <form method="POST" action="{{ url_for('complaint') }}">
+    {{ form.csrf_token }}
+    <div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col col-sm-3">
+            <div class="form-group">
+                {{ form.guest_name.label }} {{ form.guest_name(class_="form-control") }} <br/>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="form-group">
+            {{ form.room_number.label }} {{ form.room_number(class_="form-control") }} <br/>
+            </div>
+        </div>
+    </div>  
+    <div class="row justify-content-md-center">
+        <div class="col-sm-5">
+            <div class="form-group">
+            {{ form.message.label }} {{ form.message(class_="form-control") }}<br/>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-md-center">
+        <div class="col-sm-2">
+            <div class="form-group">
+            {{ form.urgency.label }} {{ form.urgency(class_="form-control") }}<br/>
+            </div>
+        </div>
+        <div class="col-sm-3">
+        </div>
+    </div>
+    <div class="row justify-content-md-center">
+        <div class="col-sm-1">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+    </div>
+</form>
+
+<!-- <form>
 
     {{ form.csrf_token }}
-    {{ form.guest_name.label }} {{ form.guest_name }} <br/>
-    {{ form.room_number.label }} {{ form.room_number }} <br/>
-    {{ form.message.label }} {{ form.message }}<br/>
-    {{ form.urgency.label }} {{ form.urgency }}<br/>
 
-    <input type="submit" value="Send">
-</form>
+    <div class="form-group">
+      <label for="guestName">{{ form.guest_name.label }}</label>
+      <input type="text" class="form-control" id="guestName" placeholder="e.g. Nick Jones">
+    </div>
+    <div class="form-group">
+        <label for="guestName">{{ form.guest_name.label }}</label>
+        <input type="text" class="form-control" id="guestName" placeholder="e.g. Nick Jones">
+      </div>
+    <div class="form-group">
+      <label for="exampleFormControlSelect1">Example select</label>
+      <select class="form-control" id="exampleFormControlSelect1">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlSelect2">Example multiple select</label>
+      <select multiple class="form-control" id="exampleFormControlSelect2">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1">Example textarea</label>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+  </form> -->
+
+
 {% endblock %}
