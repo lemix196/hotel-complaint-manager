@@ -1,6 +1,7 @@
 from flask import Flask, render_template, url_for, flash, request
 from forms import ComplaintForm
 from flask_sqlalchemy import SQLAlchemy
+from datetime import date
 
 app = Flask(__name__)
 app.config.from_pyfile('config.cfg')
@@ -14,6 +15,7 @@ class Complaint(db.Model):
     room_number = db.Column(db.Integer)
     message = db.Column(db.String(500))
     urgency = db.Column(db.String(15))
+    add_date = db.Column(db.DateTime)
 
 
 # End of DB models
@@ -30,7 +32,8 @@ def complaint():
         complaint = Complaint(guest_name=form.guest_name.data,
                               room_number=form.room_number.data,
                               message=form.message.data,
-                              urgency=form.urgency.data)
+                              urgency=form.urgency.data,
+                              add_date=date.today())
         db.session.add(complaint)
         db.session.commit()
         flash('Your complaint was succesfully sent.')

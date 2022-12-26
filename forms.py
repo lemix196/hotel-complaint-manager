@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, SelectField
+from wtforms import StringField, IntegerField, SelectField, DateField
 
 #later on add validators to that class
 class ComplaintForm(FlaskForm):

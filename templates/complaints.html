@@ -6,6 +6,7 @@
     <tr>
         <th style="text-align:center">Guest name</th>
         <th style="text-align:center">Room number</th>
+        <th style="text-align:center">Date</th>
         <th style="text-align:center">Message</th>
         <th style="text-align:center">Urgency</th>
         <th style="text-align:center">Actions</th>
@@ -16,11 +17,12 @@
 <!-- One DB object data in table row -->
         <td>{{ complaint.guest_name }}</td>
         <td style="text-align:center">{{ complaint.room_number }}</td>
-        <td>{{ complaint.message }}</td>
-        <td>{{ complaint.urgency }}</td>
+        <td style="text-align:center">{{ complaint.add_date }}</td>
+        <td style="text-align:center">{{ complaint.message }}</td>
+        <td style="text-align:center">{{ complaint.urgency }}</td>
 
 <!-- CRUD controls -->
-        <td>
+        <td style="text-align:center">
             <button type="button" class="btn btn-primary">Edit...</button>
             <button type="button" class="btn btn-danger">Delete</button>
         </td>
