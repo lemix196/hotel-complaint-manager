@@ -44,7 +44,6 @@ def complaint():
 @app.route('/complaints')
 def complaints():
     complaints = Complaint.query.all()
-
     return render_template('complaints.html', complaints=complaints, active_menu='complaints')
 
 

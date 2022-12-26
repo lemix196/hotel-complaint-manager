@@ -1,0 +1,10 @@
+{% macro show_flash() %}
+<ul>
+    {% for message in get_flashed_messages() %}  
+    <div class="alert alert-primary" role="alert">
+        <li>{{ message }}</li>
+      </div>
+
+    {% endfor %} 
+</ul>
+{% endmacro %} 
