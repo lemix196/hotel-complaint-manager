@@ -70,6 +70,13 @@ def edit_complaint(complaint_id):
     return redirect(url_for('complaints'))
 
 
+@app.route('/delete/<int:complaint_id>')
+def delete_complaint(complaint_id):
+    complaint = Complaint.query.get(complaint_id)
+    db.session.delete(complaint)
+    db.session.commit()
+    flash(f'Complaint successfully deleted.')
+    return redirect(url_for('complaints'))
 
 # @app.route('/ratings')
 # def ratings():
