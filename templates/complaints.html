@@ -17,7 +17,7 @@
 <!-- One DB object data in table row -->
         <td>{{ complaint.guest_name }}</td>
         <td style="text-align:center">{{ complaint.room_number }}</td>
-        <td style="text-align:center">{{ complaint.add_date }}</td>
+        <td style="text-align:center">{{ complaint.add_date.strftime("%d/%m/%Y %H:%M:%S") }}</td>
         <td style="text-align:center">{{ complaint.message }}</td>
         <td style="text-align:center">{{ complaint.urgency }}</td>
 

@@ -1,7 +1,7 @@
 from flask import Flask, render_template, url_for, flash, request, redirect
 from forms import ComplaintForm
 from flask_sqlalchemy import SQLAlchemy
-from datetime import date
+from datetime import datetime
 
 app = Flask(__name__)
 app.config.from_pyfile('config.cfg')
@@ -33,7 +33,7 @@ def complaint():
                               room_number=form.room_number.data,
                               message=form.message.data,
                               urgency=form.urgency.data,
-                              add_date=date.today())
+                              add_date=datetime.now())
         db.session.add(complaint)
         db.session.commit()
         flash('Your complaint was succesfully sent.')
@@ -63,7 +63,7 @@ def edit_complaint(complaint_id):
         complaint.room_number=form.room_number.data
         complaint.message=form.message.data
         complaint.urgency=form.urgency.data
-        complaint.add_date=date.today()
+        complaint.add_date=datetime.now()
         db.session.commit()
         flash(f'Record with id: {complaint_id} succesfully edited!')
 
