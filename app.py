@@ -1,6 +1,7 @@
 from flask import Flask, render_template, url_for, flash, request, redirect
 from forms import ComplaintForm
-from flask_sqlalchemy import SQLAlchemy
+from models.models import db
+from models.complaints import Complaint
 from datetime import datetime
 
 # App initialization and configuration
@@ -8,21 +9,9 @@ app = Flask(__name__)
 app.config.from_pyfile('config.cfg')
 
 # SQLAlchemy DB object initialization
-db = SQLAlchemy(app)
+# db = SQLAlchemy(app)
+db.init_app(app)
 
-# DB Models
-
-class Complaint(db.Model):
-    """Model for complaint table in DB"""
-    id = db.Column(db.Integer, primary_key=True)
-    guest_name = db.Column(db.String(50))
-    room_number = db.Column(db.Integer)
-    message = db.Column(db.String(500))
-    urgency = db.Column(db.String(15))
-    add_date = db.Column(db.DateTime)
-
-
-# End of DB models
 
 @app.route('/')
 def index():
