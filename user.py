@@ -1,6 +1,7 @@
 import os
 import hashlib
 
+
 class User:
     def __init__(self, user_name, password, group='guest'):
         self.user_name = user_name
@@ -25,5 +26,4 @@ class User:
             salt,
             110996
         )
-        
         return provided_password == stored_password
