@@ -1,6 +1,7 @@
 from .models import db
 import os
 import hashlib
+from datetime import datetime
 
 
 class User:
@@ -8,6 +9,7 @@ class User:
         self.user_name = user_name
         self.password = password
         self.group = group
+        self.date_create = datetime.today()
 
     def hash_password(self, password):
         salt = os.urandom(32)
