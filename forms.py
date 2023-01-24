@@ -29,5 +29,9 @@ class LoginForm(FlaskForm):
     password = PasswordField(u"Password")
 
 
+class RegisterForm(LoginForm):
+    confirm_password = PasswordField(u"Confirm password")
+    
+
 if __name__ == "__main__":
     pass

@@ -1,5 +1,5 @@
 from flask import Flask, render_template, url_for, flash, request, redirect
-from forms import ComplaintForm, LoginForm
+from forms import ComplaintForm, LoginForm, RegisterForm
 from models.models import db
 from models.complaints import Complaint
 from datetime import datetime
@@ -94,6 +94,12 @@ def login():
     form = LoginForm()
 
     return render_template('login.html', form=form)
+
+@app.route('/register')
+def register():
+    form = RegisterForm()
+
+    return render_template('register.html', form=form)
 
 # @app.route('/ratings')
 # def ratings():
