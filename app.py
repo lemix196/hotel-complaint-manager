@@ -1,5 +1,5 @@
 from flask import Flask, render_template, url_for, flash, request, redirect
-from forms import ComplaintForm
+from forms import ComplaintForm, LoginForm
 from models.models import db
 from models.complaints import Complaint
 from datetime import datetime
@@ -87,6 +87,13 @@ def delete_complaint(complaint_id):
 
     # Show complaints list after deleting record
     return redirect(url_for('complaints'))
+
+
+@app.route('/login')
+def login():
+    form = LoginForm()
+
+    return render_template('login.html', form=form)
 
 # @app.route('/ratings')
 # def ratings():
