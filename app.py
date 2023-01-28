@@ -94,6 +94,9 @@ def delete_complaint(complaint_id):
 def login():
     form = LoginForm()
 
+    # if request.method=="POST" and form.validate_on_submit():
+    #     logging_user = User.query.filter()
+
     return render_template('login.html', form=form)
 
 @app.route('/register', methods=['POST', 'GET'])
@@ -105,10 +108,16 @@ def register():
             new_user = User(user_name=form.user_name.data,
                             password=form.password.data
                             )
-            db.session.add(new_user)
-            db.session.commit()
-            flash(f'User {new_user.user_name} successfully created.')
-            return redirect(url_for('index'))
+            if not User.query.filter_by(user_name=new_user.user_name):
+                new_user.password = new_user.hash_password(new_user.password)
+                db.session.add(new_user)
+                db.session.commit()
+                flash(f'User {new_user.user_name} successfully created.')
+                return redirect(url_for('index'))
+            else:
+                flash(f'User with name: {new_user.user_name} already exists.')
+                return redirect(url_for('register'))
+
 
     return render_template('register.html', form=form, active_menu='register')
 
