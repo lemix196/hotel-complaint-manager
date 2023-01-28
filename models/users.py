@@ -4,12 +4,13 @@ import hashlib
 from datetime import datetime
 
 
-class User:
-    def __init__(self, user_name, password, group='guest'):
-        self.user_name = user_name
-        self.password = password
-        self.group = group
-        self.date_create = datetime.today()
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_name = db.Column(db.String(50))
+    password = db.Column(db.String(30))
+    group = db.Column(db.String(15), default='GUEST')
+    date_create = db.Column(db.DateTime, default=datetime.today())
+
 
     def hash_password(self, password):
         salt = os.urandom(32)

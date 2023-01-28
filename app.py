@@ -2,6 +2,7 @@ from flask import Flask, render_template, url_for, flash, request, redirect
 from forms import ComplaintForm, LoginForm, RegisterForm
 from models.models import db
 from models.complaints import Complaint
+from models.users import User
 from datetime import datetime
 
 # App initialization and configuration
@@ -95,11 +96,21 @@ def login():
 
     return render_template('login.html', form=form)
 
-@app.route('/register')
+@app.route('/register', methods=['POST', 'GET'])
 def register():
     form = RegisterForm()
 
-    return render_template('register.html', form=form)
+    if request.method == "POST" and form.validate_on_submit():
+        if form.password.data == form.confirm_password.data:
+            new_user = User(user_name=form.user_name.data,
+                            password=form.password.data
+                            )
+            db.session.add(new_user)
+            db.session.commit()
+            flash(f'User {new_user.user_name} successfully created.')
+            return redirect(url_for('index'))
+
+    return render_template('register.html', form=form, active_menu='register')
 
 # @app.route('/ratings')
 # def ratings():

@@ -15,5 +15,15 @@
         <li class="nav-item">
           <a class="nav-link {{ 'active' if active_menu=='complaints' }}" href="{{ url_for('complaints') }}">Complains list</a>
         </li>
+
     </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link {{ 'active' if active_menu=='register' }}" href="{{ url_for('register') }}">Create account</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{ 'active' if active_menu=='login' }}" href="{{ url_for('login') }}">Login</a>
+        </li>
+  </div>
   </nav>
