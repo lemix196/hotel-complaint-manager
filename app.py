@@ -4,6 +4,9 @@ from models.models import db
 from models.complaints import Complaint
 from models.users import User
 from datetime import datetime
+from flask_login import LoginManager
+
+
 
 # App initialization and configuration
 app = Flask(__name__)
@@ -12,6 +15,9 @@ app.config.from_pyfile('config.cfg')
 # SQLAlchemy DB object initialization
 # db = SQLAlchemy(app)
 db.init_app(app)
+
+# flask-login object initialization
+login_manager = LoginManager(app)
 
 
 @app.route('/')
@@ -93,9 +99,6 @@ def delete_complaint(complaint_id):
 @app.route('/login')
 def login():
     form = LoginForm()
-
-    # if request.method=="POST" and form.validate_on_submit():
-    #     logging_user = User.query.filter()
 
     return render_template('login.html', form=form)
 
